@@ -1,0 +1,159 @@
+\begin{thebibliography}{10}
+
+\bibitem{bach2004pairwise}
+J.~Bach and P.~Schroeder.
+\newblock Pairwise testing: A best practice that isn’t.
+\newblock In {\em Proceedings of 22nd Pacific Northwest Software Quality
+  Conference}, pages 180--196. Citeseer, 2004.
+
+\bibitem{colbourn2008locating}
+C.~J. Colbourn and D.~W. McClary.
+\newblock Locating and detecting arrays for interaction faults.
+\newblock {\em Journal of combinatorial optimization}, 15(1):17--48, 2008.
+
+\bibitem{fouche2009incremental}
+S.~Fouch{\'e}, M.~B. Cohen, and A.~Porter.
+\newblock Incremental covering array failure characterization in large
+  configuration spaces.
+\newblock In {\em Proceedings of the eighteenth international symposium on
+  Software testing and analysis}, pages 177--188. ACM, 2009.
+
+\bibitem{ghandehari2013fault}
+L.~S. Ghandehari, Y.~Lei, D.~Kung, R.~Kacker, and R.~Kuhn.
+\newblock Fault localization based on failure-inducing combinations.
+\newblock In {\em Software Reliability Engineering (ISSRE), 2013 IEEE 24th
+  International Symposium on}, pages 168--177. IEEE, 2013.
+
+\bibitem{ghandehari2012identifying}
+L.~S.~G. Ghandehari, Y.~Lei, T.~Xie, R.~Kuhn, and R.~Kacker.
+\newblock Identifying failure-inducing combinations in a combinatorial test
+  set.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}, pages 370--379. IEEE, 2012.
+
+\bibitem{tomcatconnector}
+K.~Kolinko.
+\newblock {The HTTP Connector}.
+\newblock \url{http://tomcat.apache.org/tomcat-7.0-doc/config/http.html}, 2014.
+\newblock [Online; accessed 3-Nov-2014].
+
+\bibitem{kuhn2010practical}
+D.~R. Kuhn, R.~N. Kacker, and Y.~Lei.
+\newblock Practical combinatorial testing.
+\newblock {\em NIST Special Publication}, 800:142, 2010.
+
+\bibitem{kuhn2002investigation}
+D.~R. Kuhn and M.~J. Reilly.
+\newblock An investigation of the applicability of design of experiments to
+  software testing.
+\newblock In {\em Software Engineering Workshop, 2002. Proceedings. 27th Annual
+  NASA Goddard/IEEE}, pages 91--95. IEEE, 2002.
+
+\bibitem{kuhn2004software}
+D.~R. Kuhn, D.~R. Wallace, and J.~AM~Gallo.
+\newblock Software fault interactions and implications for software testing.
+\newblock {\em Software Engineering, IEEE Transactions on}, 30(6):418--421,
+  2004.
+
+\bibitem{li2012improved}
+J.~Li, C.~Nie, and Y.~Lei.
+\newblock Improved delta debugging based on combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2012 12th International Conference
+  on}, pages 102--105. IEEE, 2012.
+
+\bibitem{martinez2008algorithms}
+C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
+\newblock Algorithms to locate errors using covering arrays.
+\newblock In {\em LATIN 2008: Theoretical Informatics}, pages 504--519.
+  Springer, 2008.
+
+\bibitem{martinez2009locating}
+C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
+\newblock Locating errors using elas, covering arrays, and adaptive testing
+  algorithms.
+\newblock {\em SIAM Journal on Discrete Mathematics}, 23(4):1776--1799, 2009.
+
+\bibitem{Masri:2014:PCC:2582050.2559932}
+W.~Masri and R.~A. Assi.
+\newblock Prevalence of coincidental correctness and mitigation of its impact
+  on fault localization.
+\newblock {\em ACM Trans. Softw. Eng. Methodol.}, 23(1):8:1--8:28, Feb. 2014.
+
+\bibitem{nie2011minimal}
+C.~Nie and H.~Leung.
+\newblock The minimal failure-causing schema of combinatorial testing.
+\newblock {\em ACM Transactions on Software Engineering and Methodology
+  (TOSEM)}, 20(4):15, 2011.
+
+\bibitem{nie2011survey}
+C.~Nie and H.~Leung.
+\newblock A survey of combinatorial testing.
+\newblock {\em ACM Computing Surveys (CSUR)}, 43(2):11, 2011.
+
+\bibitem{niu2013identifying}
+X.~Niu, C.~Nie, Y.~Lei, and A.~T. Chan.
+\newblock Identifying failure-inducing combinations using tuple relationship.
+\newblock In {\em Software Testing, Verification and Validation Workshops
+  (ICSTW), 2013 IEEE Sixth International Conference on}, pages 271--280. IEEE,
+  2013.
+
+\bibitem{shakya2012isolating}
+K.~Shakya, T.~Xie, N.~Li, Y.~Lei, R.~Kacker, and R.~Kuhn.
+\newblock Isolating failure-inducing combinations in combinatorial testing
+  using test augmentation and classification.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}, pages 620--623. IEEE, 2012.
+
+\bibitem{shi2005software}
+L.~Shi, C.~Nie, and B.~Xu.
+\newblock A software debugging method based on pairwise testing.
+\newblock In {\em Computational Science--ICCS 2005}, pages 1088--1091.
+  Springer, 2005.
+
+\bibitem{song2012itree}
+C.~Song, A.~Porter, and J.~S. Foster.
+\newblock itree: Efficiently discovering high-coverage configurations using
+  interaction trees.
+\newblock In {\em Proceedings of the 2012 International Conference on Software
+  Engineering}, pages 903--913. IEEE Press, 2012.
+
+\bibitem{wang2010adaptive}
+Z.~Wang, B.~Xu, L.~Chen, and L.~Xu.
+\newblock Adaptive interaction fault location based on combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2010 10th International Conference
+  on}, pages 495--502. IEEE, 2010.
+
+\bibitem{yilmaz2006covering}
+C.~Yilmaz, M.~B. Cohen, and A.~A. Porter.
+\newblock Covering arrays for efficient fault characterization in complex
+  configuration spaces.
+\newblock {\em Software Engineering, IEEE Transactions on}, 32(1):20--34, 2006.
+
+\bibitem{yilmaz2013reducing}
+C.~Yilmaz, E.~Dumlu, M.~Cohen, and A.~Porter.
+\newblock Reducing masking effects in combinatorialinteraction testing: A
+  feedback drivenadaptive approach.
+\newblock {\em Software Engineering, IEEE Transactions on}, 40(1):43--66, Jan
+  2014.
+
+\bibitem{zeller2002simplifying}
+A.~Zeller and R.~Hildebrandt.
+\newblock Simplifying and isolating failure-inducing input.
+\newblock {\em Software Engineering, IEEE Transactions on}, 28(2):183--200,
+  2002.
+
+\bibitem{zhang2012faulty}
+J.~Zhang, F.~Ma, and Z.~Zhang.
+\newblock Faulty interaction identification via constraint solving and
+  optimization.
+\newblock In {\em Theory and Applications of Satisfiability Testing--SAT 2012},
+  pages 186--199. Springer, 2012.
+
+\bibitem{zhang2011characterizing}
+Z.~Zhang and J.~Zhang.
+\newblock Characterizing failure-causing parameter interactions by adaptive
+  testing.
+\newblock In {\em Proceedings of the 2011 International Symposium on Software
+  Testing and Analysis}, pages 331--341. ACM, 2011.
+
+\end{thebibliography}
