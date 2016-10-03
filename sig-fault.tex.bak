@@ -671,9 +671,15 @@ Algorithm 1 shows the detail of such strategy, as well as the complete process o
   \end{algorithmic}
 \end{algorithm}
 
-The input of this algorithm is a failing test case $t$,  candidate schema $fs$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$. Its output is the MFS. In this algorithm, variable $CandiMFS$ records the currently analyzed candidate schema and is initialed to be $fs$ (line 1). $sublist$ is a list of subschemas of $CandiMFS$, which is an ordered set of pending schemas as \{ $c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$ \}, where $c_{i} \prec c_{i+1}$. It is initialed to be a empathy set (line 2). $maxHeathy$ is a healthy schema which is used to update  $HSS^{\top}$ in this algorithm, and it is initialed to be Null (line 3).
+The input of this algorithm is a failing test case $t$,  candidate schema $fs$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$. Its output is the MFS. In this algorithm, variable $CandiMFS$ records the currently analyzed candidate schema and is initialed to be $fs$ (line 1). $sublist$ is a list of subschemas of $CandiMFS$, which is an ordered set of pending schemas as \{$c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$\}, where $c_{i} \prec c_{i+1}$. It is initialed to be a empathy set (line 2). $maxHeathy$ is a healthy schema which is used to update  $HSS^{\top}$ in this algorithm, and it is initialed to be Null (line 3).
 
-Algorithm loops until the MFS is identified (line 4 - 25). In this loop, we firstly
+Algorithm 1 loops until the MFS is identified (line 4 - 25). In this loop, it firstly obtain the candidate maximal pending schemas $Cns$ (line 5), as well as the subschemas of the candidate MFS with the biggest degree (line 6). Then, a longest list of subschemas of this candidate MFS is obtained (line 7). More formally, $sublist = \{ \}$. Note that each schema in this set must be a pending schema, this is because according to the candidate MFS, their subschema must not be, and also.   Also Note that the reason that we only use the longest sublist is to utilize the binary search. If we cannot obtain any sublist (line 8), which means that all the subschemas is checked to be healthy, we will break the loop (line 9), and let the candaite MFS is surely the MFS we looked for(line 27). Otherwise, we will use binary search to each the schema in this sublist (line 11 - 23).
+Note that during the approach, we need to update (line 26)
+
+
+To better illustrate this algorithm, we offer an example in Table to .
+
+As the algorithm to identify the MFS when given a candidate MFS is introduced, to complete the MFS identification when given a failing test case, the key is how to find these candidate MFS during. Algorithm 2 describes the process, as well as the complete process of how to identify the MFS when given a failing test case.
 
 
 
@@ -725,18 +731,16 @@ Algorithm loops until the MFS is identified (line 4 - 25). In this loop, we firs
   \end{algorithmic}
 \end{algorithm}
 
+The input of this algorithm is a failing test case $t$, and the output is the MFS in this test case. Variable $HSS^{\top}$ records the current maximal healthy faulty schema set, and is intially to be ,  current minimal faulty schema set $FSS^{\bot}$, and is intially to be. the first candidate MFS $fs$ is test case $t$ itself, this is becasue, non of its subschema is find to be faulty at the begining.
 
-binary search is one part of
-
-
-Find a pending head and tail, judge whether it is the parent or child the current faulty schema.
+This algorithm also consists an outer loop (line 4 - 27), in this loop.
 
 
-The overall procedure of our MFS identification approach is given as Algorithm 1.
-
-In this algorithm, $HSS^{\top}$ is the maximal set of healthy schemas, and is initially set to be empty (line 1). $FSS^{\bot}$ is the minimal set of faulty schemas, and is initially assigned to have test case $t$ (line 2). In the loop (line 3 - 14), we firstly obtaining one pending schema (line 4 - 6).  Note that $s_{p}$ must satisfy Formula \ref{eq:pssthird}, i.e., $s_{p} \in$ PSS = \{$ c\ |\ \exists c_{1}' \in Cfs$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in Chs$, $c_{1}' \preceq c$\}. In the implementation of our algorithm, we do not need to obtain all the pending schemas; instead, we just need to get one schema that is in this set. If no schema can be obtained (line 7) (indicating that there is no un-determined schema), we will break the loop (line 8), and output the MFS (line 15). Otherwise, we will check this schema to be faulty or healthy (line 10), and then update $FSS^{\bot}$ and $HSS^{\top}$ (line 11).
-
-It is noted that, in Algorithm 1, we do not describe which pending schema $s_{p}$ is obtained from the pending schemas set PSS.  How to select a pending schema is important, as it will significantly influence the speed of convergence of this algorithm, as well as the number of pending schemas we need to check to get the MFS. In this paper, we use binary search strategy to select a pending schema. Formally, let $c_{1} \in CMXS(FSS, t)$ and $c_{2} \in CMNS(HSS, t)$, $c_{1} \preceq c_{2}$. Then according to proposition \ref{pro:pending}, $\forall c_{3}, c_{1} \prec c_{3} \prec c_{2}$, $c_{3}$ is a pending schema. Without loss of generality, we can get an ordered set of pending schemas as \{ $c_{1}$, $c_{3_{1}}$, $c_{3_{2}}$, ..., $c_{3_{i}}$, ..., $c_{2}$ \}, where $c_{1} \prec c_{3_{1}} \prec c_{3_{2}}  ... c_{3_{i}}  \prec c_{2}$.  Then at each iteration, we will select the middle element in the ordered set and check it. According to Propositions \ref{pro:subofhealthy} and \ref{pro:superoffaulty}, after we determined it to be healthy or faulty, we can then determine half of schemas in this ordered set of pending schemas to be healthy or faulty. Then we will update this ordered set and repeat the binary search selecting process until all the schemas in this set are determined. Note that, to take full advantage of binary search, we need to make this ordered set as large as possible. Hence, at the first of this selection procedure, we need to select $c_{1} \in CMXS(FSS, t)$ and $c_{2} \in CMNS(HSS, t)$, such that $c_{1} \preceq c_{2}$, and $|c_{1}| - |c_{2}|$ as large as possible.
+%The overall procedure of our MFS identification approach is given as Algorithm 1.
+%
+%In this algorithm, $HSS^{\top}$ is the maximal set of healthy schemas, and is initially set to be empty (line 1). $FSS^{\bot}$ is the minimal set of faulty schemas, and is initially assigned to have test case $t$ (line 2). In the loop (line 3 - 14), we firstly obtaining one pending schema (line 4 - 6).  Note that $s_{p}$ must satisfy Formula \ref{eq:pssthird}, i.e., $s_{p} \in$ PSS = \{$ c\ |\ \exists c_{1}' \in Cfs$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in Chs$, $c_{1}' \preceq c$\}. In the implementation of our algorithm, we do not need to obtain all the pending schemas; instead, we just need to get one schema that is in this set. If no schema can be obtained (line 7) (indicating that there is no un-determined schema), we will break the loop (line 8), and output the MFS (line 15). Otherwise, we will check this schema to be faulty or healthy (line 10), and then update $FSS^{\bot}$ and $HSS^{\top}$ (line 11).
+%
+%It is noted that, in Algorithm 1, we do not describe which pending schema $s_{p}$ is obtained from the pending schemas set PSS.  How to select a pending schema is important, as it will significantly influence the speed of convergence of this algorithm, as well as the number of pending schemas we need to check to get the MFS. In this paper, we use binary search strategy to select a pending schema. Formally, let $c_{1} \in CMXS(FSS, t)$ and $c_{2} \in CMNS(HSS, t)$, $c_{1} \preceq c_{2}$. Then according to proposition \ref{pro:pending}, $\forall c_{3}, c_{1} \prec c_{3} \prec c_{2}$, $c_{3}$ is a pending schema. Without loss of generality, we can get an ordered set of pending schemas as \{ $c_{1}$, $c_{3_{1}}$, $c_{3_{2}}$, ..., $c_{3_{i}}$, ..., $c_{2}$ \}, where $c_{1} \prec c_{3_{1}} \prec c_{3_{2}}  ... c_{3_{i}}  \prec c_{2}$.  Then at each iteration, we will select the middle element in the ordered set and check it. According to Propositions \ref{pro:subofhealthy} and \ref{pro:superoffaulty}, after we determined it to be healthy or faulty, we can then determine half of schemas in this ordered set of pending schemas to be healthy or faulty. Then we will update this ordered set and repeat the binary search selecting process until all the schemas in this set are determined. Note that, to take full advantage of binary search, we need to make this ordered set as large as possible. Hence, at the first of this selection procedure, we need to select $c_{1} \in CMXS(FSS, t)$ and $c_{2} \in CMNS(HSS, t)$, such that $c_{1} \preceq c_{2}$, and $|c_{1}| - |c_{2}|$ as large as possible.
 
 
 
@@ -757,6 +761,9 @@ For a pending schema, we generate an extra test case that contains this schema. 
 %
 %When the extra case fails, this is a faulty schema (or there exists no faulty schema and this test case would not fail because the assumption says that this newly generated case will not introduce additional faulty schemas).
 %\end{proof}
+
+As an example, we can leanr
+
 \subsubsection{Alleviation of assumption 3}
 
 If assumption 3 does not hold, it may lead to incorrect pending schema checking. Specifically, if the extra test case fails during testing, we cannot ensure that it is because the pending schema is a faulty schema, or because this extra test case contains another MFS which is not contained in the original failing test case. Consequently, we may determine a pending schema to be faulty schema while it is actually a healthy schema.

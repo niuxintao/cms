@@ -1,14 +1,11 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  3 OCT 2016 04:48
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  4 OCT 2016 05:31
 entering extended mode
 **sig-fault.tex
-
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\sig-fau
-lt.tex"
+(C:\Users\xintao\Desktop\cms\sig-fault.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
-
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\sig-alt
-ernate-05-2015.cls" (C:\CTEX\MiKTeX\tex\latex\graphics\epsfig.sty
+(C:\Users\xintao\Desktop\cms\sig-alternate-05-2015.cls
+(C:\CTEX\MiKTeX\tex\latex\graphics\epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
 (C:\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
@@ -221,10 +218,10 @@ LaTeX Info: Redefining \cite on input line 1408.
 \Urlmuskip=\muskip11
 Package: url 2004/03/15  ver 3.1  Verb mode for urls, etc.
 )
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\acmcopy
-right.sty"
+(C:\Users\xintao\Desktop\cms\acmcopyright.sty
 Package: acmcopyright 2014/06/29 v1.2 Copyright statemens for ACM classes
- (C:\CTEX\MiKTeX\tex\latex\xkeyval\xkeyval.sty
+
+(C:\CTEX\MiKTeX\tex\latex\xkeyval\xkeyval.sty
 Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
 
 (C:\CTEX\MiKTeX\tex\generic\xkeyval\xkeyval.tex
@@ -297,8 +294,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 (C:\CTEX\MiKTeX\tex\latex\multirow\multirow.sty
 \bigstrutjot=\dimen125
 )
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\sig-fau
-lt.aux")
+(C:\Users\xintao\Desktop\cms\sig-fault.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
@@ -328,7 +324,8 @@ Requested font "cmex7" at 6.0pt
 Requested font "cmex7" at 5.0pt
  -> cmex7
 LaTeX Font Info:    Try loading font information for U+msa on input line 200.
- (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+
+(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 Requested font "msam10" at 9.0pt
@@ -557,79 +554,72 @@ Underfull \vbox (badness 6364) has occurred while \output is active []
 Requested font "aer5" at 5.0pt
  -> aer5
  [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 \c@lemma=\count123
-
-[7]
-Underfull \vbox (badness 1681) has occurred while \output is active []
-
- [8]
+ [7]
+[8]
 File: single.eps Graphic file (type eps)
+ <single.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 885--886
+ [][] 
+ []
 
-<single.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 874--875
+Invalid UTF-8 byte or sequence at line 905 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 905 replaced by U+FFFD.
+File: d-8-2.eps Graphic file (type eps)
+<d-8-2.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 905--906
  [][] 
  []
 
 
 Underfull \vbox (badness 1924) has occurred while \output is active []
 
-Invalid UTF-8 byte or sequence at line 894 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 894 replaced by U+FFFD.
-File: d-8-2.eps Graphic file (type eps)
-
-<d-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 894--895
- [][] 
- []
-
-Invalid UTF-8 byte or sequence at line 911 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 911 replaced by U+FFFD.
-File: i-8-2.eps Graphic file (type eps)
-<i-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 911--912
- [][] 
- []
-
-
-Underfull \vbox (badness 3229) has occurred while \output is active []
-
  [9]
-File: cpp.pdf Graphic file (type QTm)
+Invalid UTF-8 byte or sequence at line 922 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 922 replaced by U+FFFD.
+File: i-8-2.eps Graphic file (type eps)
 
-<use  "cpp.pdf" >
+<i-8-2.eps>
 Overfull \hbox (5.71754pt too wide) in paragraph at lines 922--923
  [][] 
  []
 
-File: cpp2.pdf Graphic file (type QTm)
-<use  "cpp2.pdf" >
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 938--939
+File: cpp.pdf Graphic file (type QTm)
+<use  "cpp.pdf" >
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 933--934
  [][] 
  []
 
 [10]
-Invalid UTF-8 byte or sequence at line 1072 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1072 replaced by U+FFFD.
-File: num_r.eps Graphic file (type eps)
- <num_r.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1072--1073
+File: cpp2.pdf Graphic file (type QTm)
+ <use  "cpp2.pdf" >
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 949--950
  [][] 
  []
 
 [11]
-Overfull \hbox (7.68515pt too wide) in paragraph at lines 1108--1122
+Invalid UTF-8 byte or sequence at line 1083 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1083 replaced by U+FFFD.
+File: num_r.eps Graphic file (type eps)
+ <num_r.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1083--1084
+ [][] 
+ []
+
+
+Overfull \hbox (7.68515pt too wide) in paragraph at lines 1119--1133
  [][][] 
  []
 
-[12]
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\sig-fau
-lt.bbl"
+[12] (C:\Users\xintao\Desktop\cms\sig-fault.bbl
 Missing character: There is no ’ in font aer9!
-
+ [13])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13])
-Overfull \hbox (4.86461pt too wide) in paragraph at lines 1213--1214
+
+Overfull \hbox (4.86461pt too wide) in paragraph at lines 1224--1225
 []\T1/aer/m/n/9 Let $\OML/cmm/m/it/9 c[]$ \T1/aer/m/n/9 = {$\OT1/cmr/m/n/9 (\OM
 L/cmm/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OT1/cmr/m/n/9 (\OML/cmm
 /m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , ..., $\OT1/cmr/m/n/9 (\OML/cmm
@@ -638,7 +628,7 @@ m/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ,
  []
 
 
-Overfull \hbox (6.24454pt too wide) in paragraph at lines 1223--1224
+Overfull \hbox (6.24454pt too wide) in paragraph at lines 1234--1235
 []\T1/aer/m/n/9 With re-spec-t to set B, $\OMS/cmsy/m/n/9 8\OML/cmm/m/it/9 c[] 
 \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 B$\T1/aer/m/n/9 , it has $\OMS/cmsy/m/n/9 9\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cm
@@ -646,7 +636,7 @@ m/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/cmm/m/it/9 ; c[]$
  []
 
 
-Overfull \hbox (4.52467pt too wide) in paragraph at lines 1232--1233
+Overfull \hbox (4.52467pt too wide) in paragraph at lines 1243--1244
 \T1/aer/m/n/9 {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j \OML/cmm/m/it/9 c \OMS/cmsy
 /m/n/9 ^^^ \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 8\OML/cmm/m/it/9
  c[] \OMS/cmsy/m/n/9 2 f\OML/cmm/m/it/9 c[]; c[]\OMS/cmsy/m/n/9 g\OML/cmm/m/it/
@@ -657,7 +647,7 @@ sy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m
  []
 
 
-Overfull \hbox (3.67744pt too wide) in paragraph at lines 1250--1251
+Overfull \hbox (3.67744pt too wide) in paragraph at lines 1261--1262
 \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 9\OML/cmm/m/it/9 c[] \OMS/c
 msy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/
 m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/
@@ -667,7 +657,7 @@ t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ={$\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 p[]; v[]\OT1
  []
 
 
-Overfull \hbox (5.18196pt too wide) in paragraph at lines 1259--1260
+Overfull \hbox (5.18196pt too wide) in paragraph at lines 1270--1271
 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/
 cmm/m/it/9 ; c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/9 c[]$\T1/aer/m/n/9 . As $\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cm
@@ -677,12 +667,12 @@ m/m/it/9 c[]; t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OMS/cmsy/m/n/9 9\OML/cmm/m/it
  []
 
 
-Overfull \hbox (5.40933pt too wide) in paragraph at lines 1267--1268
+Overfull \hbox (5.40933pt too wide) in paragraph at lines 1278--1279
 []\T1/aer/m/n/9 We just need to prove that for t-wo healthy schemas
  []
 
-
-Overfull \hbox (3.00629pt too wide) in paragraph at lines 1290--1291
+[14]
+Overfull \hbox (3.00629pt too wide) in paragraph at lines 1301--1302
 []\T1/aer/m/n/9 Let B = {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j 9\OML/cmm/m/it/9 
 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 FSS; 
 t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/c
@@ -690,11 +680,9 @@ mm/m/it/9 CMNS\OT1/cmr/m/n/9 ($ $\OML/cmm/m/it/9 HSS; t\OT1/cmr/m/n/9 )$\T1/aer
 /m/n/9 ,
  []
 
-[14] [15
+[15
 
-]
-("C:\Users\xintao\Desktop\SIG Proceedings Template-Jan2015 Zip - 副本\sig-fau
-lt.aux") )
+] (C:\Users\xintao\Desktop\cms\sig-fault.aux) )
 (\end occurred inside a group at level 2)
 
 ### simple group (level 2) entered at line 505 ({)
@@ -702,7 +690,7 @@ lt.aux") )
 ### bottom level 
 Here is how much of TeX's memory you used:
  3073 strings out of 430478
- 35479 string characters out of 3191502
+ 35251 string characters out of 3191502
  110632 words of memory out of 3000000
  6137 multiletter control sequences out of 15000+200000
  52284 words of font info for 65 fonts, out of 3000000 for 9000

@@ -671,15 +671,21 @@ Algorithm 1 shows the detail of such strategy, as well as the complete process o
   \end{algorithmic}
 \end{algorithm}
 
-The input of this algorithm is a failing test case $t$,  candidate schema $fs$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$. Its output is the MFS. In this algorithm, variable $CandiMFS$ records the currently analyzed candidate schema and is initialed to be $fs$ (line 1). $sublist$ is a list of subschemas of $CandiMFS$, which is an ordered set of pending schemas as \{ $c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$ \}, where $c_{i} \prec c_{i+1}$. It is initialed to be a empathy set (line 2). $maxHeathy$ is a healthy schema which is used to update  $HSS^{\top}$ in this algorithm, and it is initialed to be Null (line 3).
+The input of this algorithm is a failing test case $t$,  candidate schema $fs$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$. Its output is the MFS. In this algorithm, variable $CandiMFS$ records the currently analyzed candidate schema and is initialed to be $fs$ (line 1). $sublist$ is a list of subschemas of $CandiMFS$, which is an ordered set of pending schemas as \{$c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$\}, where $c_{i} \prec c_{i+1}$. It is initialed to be a empathy set (line 2). $maxHeathy$ is a healthy schema which is used to update  $HSS^{\top}$ in this algorithm, and it is initialed to be Null (line 3).
 
-Algorithm 1 loops until the MFS is identified (line 4 - 25). In this loop, it firstly obtain the candidate maximal pending schemas $Cns$ (line 5), as well as the subschemas of the candidate MFS with the highest degree (line 6). Then, a longest list of subschemas of this candidate MFS is obtained (line 7). More formally, $sublist = \{ \}$. Note that each scheam in this set must be a pending schema, this is because according to the candidate MFS, their subschema must not be, and also.   Also Note that the reason that we only use the longest sublist is to utilize the binary search. If we cannot obtain any sublist (line 8), which means that all the subschemas is checked to be healthy, we will break the loop (line 9), and let the candaite MFS is surely the MFS we looked for(line 27). Otherwise, we will use binary search to each the schema in this sublist (line 11 - 23).
-Note that during the approach, we need to update (line 26)
+Algorithm 1 loops until the MFS is identified (line 4 - 25). In this loop, it firstly obtain the candidate maximal pending schemas $Cns$ (line 5), as well as the subschemas of the candidate MFS with the biggest degree (line 6). Then,  a list of subschemas of this candidate MFS is obtained (line 7). More formally, \{$c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$\}, where $c_{i} \prec c_{i+1}, c_{1} \in Cns, c_{m} \in MaxSub$.  Note that each schema in this set must be a pending schema, this is because according to the definition of candidate MFS, all their subschemas must not be either healthy schemas or pending schemas.  Obviously, $\forall c_{i} \in sublist, c_{i} \prec CandiMFS, \ and\  c_{1} \preceq c_{i}$.  Here, each subschema cannot be healthy schema, otherwise $c_{1}$ must be healthy schema, which is contradiction. Consequently, each schema in $sublist$ can only be pending schema. Also note that there may be more than one set of schemas that satisfies our requirement, and each time we only select the set with the maximal number of schemas. The reason why we do this is to fully utilize binary search.
+ 
+If we cannot obtain any sublist (line 8), which means that all the subschemas of the candidate MFS are checked to be healthy, we will then break the loop (line 9), and output this candidate MFS to be the real MFS (line 27). Otherwise, we will use binary search to check the schemas in this sublist (line 11 - 23). Specifically, each time we select the schema in the sublist with the location of $(head + tail) / 2$ (line 14), where $head$ is initial to be 0 (line 11), and the tail is initial to be the last location in $sublist$ (line 12). If this schema is checked to be faulty (line 16), which indicates the original candidate MFS has one subschema that is faulty and hence do not satisfies the candidate MFS definition any more, this schema will be regarded as the new candidate MFS(line 18), and the head index will be assigned to the next location of the location of the this schema.  If this schema is checked to be healthy (line 19), the tail index will be assigned to the previous location of the location of this schema (line 20), and the variable $maxHeathy$ will store this schema (line 21).  After we checked the schemas this sublist with binary search, we needs to update the current maximal healthy faulty schema set $HSS^{\top}$ by adding schema $maxHeathy$ (line 24).
 
 
-To better illstarte this algorithm, we offer an example in Table to .
+Note that after we obtained the MFS by this algorithm, we also need to update current minimal faulty schema set $FSS^{\bot}$ by adding the identified MFS (line 26).
 
-As the algorithm to identify the MFS when given a candidate MFS is introudced, to compelete the MFS identifcaiton when given a failing test case, the key is how to find these candiate MFS during. Algorithm 2 describes the process, as well as the complete process of how to identify the MFS when given a failing test case.
+
+To better illustrate this algorithm, we offer an example in Fig .
+
+
+
+Since we have given the algorithm to identify the MFS when given a candidate MFS, to complete the process of MFS identification, we need to know how to find these candidate MFS. Algorithm 2 describes how we can find these candidate MFS, as well as the complete process of how to identify the MFS when given a failing test case.
 
 
 
@@ -731,9 +737,11 @@ As the algorithm to identify the MFS when given a candidate MFS is introudced, t
   \end{algorithmic}
 \end{algorithm}
 
-The input of this algorithm is a failing test case $t$, and the output is the MFS in this test case. Variable $HSS^{\top}$ records the current maximal healthy faulty schema set, and is intially to be ,  current minimal faulty schema set $FSS^{\bot}$, and is intially to be. the first candidate MFS $fs$ is test case $t$ itself, this is becasue, non of its subschema is find to be faulty at the begining. 
+The input of this algorithm is a failing test case $t$, and the output is the MFS in this test case. Variable $HSS^{\top}$ records the current maximal healthy faulty schema set, and is initially to be empty (line 1).   Variable $FSS^{\bot}$ records the current minimal faulty schema set, and is initially to have one schema, i.e., test case $t$. The first candidate MFS $fs$ is test case $t$ itself (line 3). This is because none of its subschema is find to be faulty at the beginning.
 
-This algorithm also consists an outer loop (line 4 - 27), in this loop.
+This algorithm also consists an outer loop (line 4 - 27). In this loop, we first obtain the candiate maximal pendign schema set Cxs and candiate minaml pending schema set Cns. If in the current iteration there is no candaite MFS, we need to obtain one. The process is first to obain a list of scheams . Formally. Note that each schema in this set is pendign. As we show in alogrithm 1. 
+
+If this list is empty, then it indicates that there is no pending schema in this test case, indicates that we have labeled all the scehams to be either, means all thes MFS is identifid in FSS.  Otherwise, we just get the fisrt one . If it fails, then its is the candaite MFS. We just need to call the algorithm to identifu thje MFS
 
 
 %The overall procedure of our MFS identification approach is given as Algorithm 1.
@@ -761,6 +769,9 @@ For a pending schema, we generate an extra test case that contains this schema. 
 %
 %When the extra case fails, this is a faulty schema (or there exists no faulty schema and this test case would not fail because the assumption says that this newly generated case will not introduce additional faulty schemas).
 %\end{proof}
+
+As an example, we can leanr
+
 \subsubsection{Alleviation of assumption 3}
 
 If assumption 3 does not hold, it may lead to incorrect pending schema checking. Specifically, if the extra test case fails during testing, we cannot ensure that it is because the pending schema is a faulty schema, or because this extra test case contains another MFS which is not contained in the original failing test case. Consequently, we may determine a pending schema to be faulty schema while it is actually a healthy schema.
