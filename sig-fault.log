@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  9 OCT 2016 16:58
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  9 OCT 2016 17:57
 entering extended mode
 **sig-fault.tex
 (C:\Users\xintao\Desktop\cms\sig-fault.tex
@@ -562,65 +562,61 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [8] [9]
 File: single.eps Graphic file (type eps)
  <single.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 909--910
- [][] 
- []
-
-
-Underfull \vbox (badness 5711) has occurred while \output is active []
-
-Invalid UTF-8 byte or sequence at line 929 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 929 replaced by U+FFFD.
-File: d-8-2.eps Graphic file (type eps)
-
-<d-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 929--930
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 910--911
  [][] 
  []
 
 [10]
-Invalid UTF-8 byte or sequence at line 946 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 946 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 930 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 930 replaced by U+FFFD.
+File: d-8-2.eps Graphic file (type eps)
+ <d-8-2.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 930--931
+ [][] 
+ []
+
+Invalid UTF-8 byte or sequence at line 947 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 947 replaced by U+FFFD.
 File: i-8-2.eps Graphic file (type eps)
- <i-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 946--947
+<i-8-2.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 947--948
  [][] 
  []
 
 File: cpp.pdf Graphic file (type QTm)
 <use  "cpp.pdf" >
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 957--958
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 958--959
  [][] 
  []
 
 [11]
 File: cpp2.pdf Graphic file (type QTm)
  <use  "cpp2.pdf" >
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 973--974
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 974--975
  [][] 
  []
 
 [12]
-Invalid UTF-8 byte or sequence at line 1107 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1107 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1108 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1108 replaced by U+FFFD.
 File: num_r.eps Graphic file (type eps)
  <num_r.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1107--1108
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1108--1109
  [][] 
  []
 
 
-Overfull \hbox (7.68515pt too wide) in paragraph at lines 1143--1157
+Overfull \hbox (7.68515pt too wide) in paragraph at lines 1144--1158
  [][][] 
  []
 
 [13] (C:\Users\xintao\Desktop\cms\sig-fault.bbl
 Missing character: There is no ’ in font aer9!
- [14])
+ [14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (4.86461pt too wide) in paragraph at lines 1248--1249
+)
+Overfull \hbox (4.86461pt too wide) in paragraph at lines 1249--1250
 []\T1/aer/m/n/9 Let $\OML/cmm/m/it/9 c[]$ \T1/aer/m/n/9 = {$\OT1/cmr/m/n/9 (\OM
 L/cmm/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OT1/cmr/m/n/9 (\OML/cmm
 /m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , ..., $\OT1/cmr/m/n/9 (\OML/cmm
@@ -629,7 +625,7 @@ m/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ,
  []
 
 
-Overfull \hbox (6.24454pt too wide) in paragraph at lines 1258--1259
+Overfull \hbox (6.24454pt too wide) in paragraph at lines 1259--1260
 []\T1/aer/m/n/9 With re-spec-t to set B, $\OMS/cmsy/m/n/9 8\OML/cmm/m/it/9 c[] 
 \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 B$\T1/aer/m/n/9 , it has $\OMS/cmsy/m/n/9 9\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cm
@@ -637,7 +633,7 @@ m/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/cmm/m/it/9 ; c[]$
  []
 
 
-Overfull \hbox (4.52467pt too wide) in paragraph at lines 1267--1268
+Overfull \hbox (4.52467pt too wide) in paragraph at lines 1268--1269
 \T1/aer/m/n/9 {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j \OML/cmm/m/it/9 c \OMS/cmsy
 /m/n/9 ^^^ \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 8\OML/cmm/m/it/9
  c[] \OMS/cmsy/m/n/9 2 f\OML/cmm/m/it/9 c[]; c[]\OMS/cmsy/m/n/9 g\OML/cmm/m/it/
@@ -647,8 +643,8 @@ sy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m
 /n/9 )$
  []
 
-
-Overfull \hbox (3.67744pt too wide) in paragraph at lines 1285--1286
+[15]
+Overfull \hbox (3.67744pt too wide) in paragraph at lines 1286--1287
 \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 9\OML/cmm/m/it/9 c[] \OMS/c
 msy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/
 m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/
@@ -658,7 +654,7 @@ t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ={$\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 p[]; v[]\OT1
  []
 
 
-Overfull \hbox (5.18196pt too wide) in paragraph at lines 1294--1295
+Overfull \hbox (5.18196pt too wide) in paragraph at lines 1295--1296
 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/
 cmm/m/it/9 ; c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/9 c[]$\T1/aer/m/n/9 . As $\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cm
@@ -668,12 +664,12 @@ m/m/it/9 c[]; t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OMS/cmsy/m/n/9 9\OML/cmm/m/it
  []
 
 
-Overfull \hbox (5.40933pt too wide) in paragraph at lines 1302--1303
+Overfull \hbox (5.40933pt too wide) in paragraph at lines 1303--1304
 []\T1/aer/m/n/9 We just need to prove that for t-wo healthy schemas
  []
 
-[15]
-Overfull \hbox (3.00629pt too wide) in paragraph at lines 1325--1326
+
+Overfull \hbox (3.00629pt too wide) in paragraph at lines 1326--1327
 []\T1/aer/m/n/9 Let B = {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j 9\OML/cmm/m/it/9 
 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 FSS; 
 t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/c
@@ -681,9 +677,7 @@ mm/m/it/9 CMNS\OT1/cmr/m/n/9 ($ $\OML/cmm/m/it/9 HSS; t\OT1/cmr/m/n/9 )$\T1/aer
 /m/n/9 ,
  []
 
-[16
-
-] (C:\Users\xintao\Desktop\cms\sig-fault.aux) )
+[16] (C:\Users\xintao\Desktop\cms\sig-fault.aux) )
 (\end occurred inside a group at level 4)
 
 ### simple group (level 4) entered at line 785 ({)
