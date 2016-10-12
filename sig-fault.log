@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  9 OCT 2016 17:57
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  13 OCT 2016 04:56
 entering extended mode
 **sig-fault.tex
 (C:\Users\xintao\Desktop\cms\sig-fault.tex
@@ -554,69 +554,73 @@ Requested font "aer5" at 5.0pt
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
+[7]
+File: exof1.eps Graphic file (type eps)
+ <exof1.eps>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-\c@lemma=\count123
+File: exofalo2.eps Graphic file (type eps)
 
-[8] [9]
+<exofalo2.eps>
+\c@lemma=\count123
+ [8] [9] [10] [11]
 File: single.eps Graphic file (type eps)
  <single.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 910--911
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1004--1005
  [][] 
  []
 
-[10]
-Invalid UTF-8 byte or sequence at line 930 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 930 replaced by U+FFFD.
+[12]
+Invalid UTF-8 byte or sequence at line 1024 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1024 replaced by U+FFFD.
 File: d-8-2.eps Graphic file (type eps)
  <d-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 930--931
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1024--1025
  [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 947 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 947 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1041 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1041 replaced by U+FFFD.
 File: i-8-2.eps Graphic file (type eps)
 <i-8-2.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 947--948
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1041--1042
  [][] 
  []
 
 File: cpp.pdf Graphic file (type QTm)
 <use  "cpp.pdf" >
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 958--959
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1052--1053
  [][] 
  []
 
-[11]
+[13]
 File: cpp2.pdf Graphic file (type QTm)
  <use  "cpp2.pdf" >
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 974--975
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1068--1069
  [][] 
  []
 
-[12]
-Invalid UTF-8 byte or sequence at line 1108 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1108 replaced by U+FFFD.
+[14]
+Invalid UTF-8 byte or sequence at line 1202 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1202 replaced by U+FFFD.
 File: num_r.eps Graphic file (type eps)
  <num_r.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1108--1109
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1202--1203
  [][] 
  []
 
 
-Overfull \hbox (7.68515pt too wide) in paragraph at lines 1144--1158
+Overfull \hbox (7.68515pt too wide) in paragraph at lines 1238--1252
  [][][] 
  []
 
-[13] (C:\Users\xintao\Desktop\cms\sig-fault.bbl
-Missing character: There is no ’ in font aer9!
- [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[15] (C:\Users\xintao\Desktop\cms\sig-fault.bbl
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
+ [16]
+Missing character: There is no ’ in font aer9!
 )
-Overfull \hbox (4.86461pt too wide) in paragraph at lines 1249--1250
+Overfull \hbox (4.86461pt too wide) in paragraph at lines 1343--1344
 []\T1/aer/m/n/9 Let $\OML/cmm/m/it/9 c[]$ \T1/aer/m/n/9 = {$\OT1/cmr/m/n/9 (\OM
 L/cmm/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OT1/cmr/m/n/9 (\OML/cmm
 /m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , ..., $\OT1/cmr/m/n/9 (\OML/cmm
@@ -625,15 +629,15 @@ m/m/it/9 p[]; v[]\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ,
  []
 
 
-Overfull \hbox (6.24454pt too wide) in paragraph at lines 1259--1260
+Overfull \hbox (6.24454pt too wide) in paragraph at lines 1353--1354
 []\T1/aer/m/n/9 With re-spec-t to set B, $\OMS/cmsy/m/n/9 8\OML/cmm/m/it/9 c[] 
 \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 B$\T1/aer/m/n/9 , it has $\OMS/cmsy/m/n/9 9\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cm
 m/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/cmm/m/it/9 ; c[]$
  []
 
-
-Overfull \hbox (4.52467pt too wide) in paragraph at lines 1268--1269
+[17]
+Overfull \hbox (4.52467pt too wide) in paragraph at lines 1362--1363
 \T1/aer/m/n/9 {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j \OML/cmm/m/it/9 c \OMS/cmsy
 /m/n/9 ^^^ \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 8\OML/cmm/m/it/9
  c[] \OMS/cmsy/m/n/9 2 f\OML/cmm/m/it/9 c[]; c[]\OMS/cmsy/m/n/9 g\OML/cmm/m/it/
@@ -643,8 +647,8 @@ sy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m
 /n/9 )$
  []
 
-[15]
-Overfull \hbox (3.67744pt too wide) in paragraph at lines 1286--1287
+
+Overfull \hbox (3.67744pt too wide) in paragraph at lines 1380--1381
 \OML/cmm/m/it/9 t \OT1/cmr/m/n/9 && \OMS/cmsy/m/n/9 9\OML/cmm/m/it/9 c[] \OMS/c
 msy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/
 m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/
@@ -654,7 +658,7 @@ t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 ={$\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 p[]; v[]\OT1
  []
 
 
-Overfull \hbox (5.18196pt too wide) in paragraph at lines 1295--1296
+Overfull \hbox (5.18196pt too wide) in paragraph at lines 1389--1390
 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c[]; t\OT1/cmr/m/n/9 )\OML/
 cmm/m/it/9 ; c[] \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/9 c[]$\T1/aer/m/n/9 . As $\O
 ML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMNS\OT1/cmr/m/n/9 (\OML/cm
@@ -664,12 +668,12 @@ m/m/it/9 c[]; t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OMS/cmsy/m/n/9 9\OML/cmm/m/it
  []
 
 
-Overfull \hbox (5.40933pt too wide) in paragraph at lines 1303--1304
+Overfull \hbox (5.40933pt too wide) in paragraph at lines 1397--1398
 []\T1/aer/m/n/9 We just need to prove that for t-wo healthy schemas
  []
 
 
-Overfull \hbox (3.00629pt too wide) in paragraph at lines 1326--1327
+Overfull \hbox (3.00629pt too wide) in paragraph at lines 1420--1421
 []\T1/aer/m/n/9 Let B = {$\OML/cmm/m/it/9 c \OMS/cmsy/m/n/9 j 9\OML/cmm/m/it/9 
 c[] \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 CMXS\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 FSS; 
 t\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 , $\OML/cmm/m/it/9 c[] \OMS/cmsy/m/n/9 2 \OML/c
@@ -677,21 +681,21 @@ mm/m/it/9 CMNS\OT1/cmr/m/n/9 ($ $\OML/cmm/m/it/9 HSS; t\OT1/cmr/m/n/9 )$\T1/aer
 /m/n/9 ,
  []
 
-[16] (C:\Users\xintao\Desktop\cms\sig-fault.aux) )
+[18] (C:\Users\xintao\Desktop\cms\sig-fault.aux) )
 (\end occurred inside a group at level 4)
 
-### simple group (level 4) entered at line 785 ({)
-### simple group (level 3) entered at line 785 ({)
+### simple group (level 4) entered at line 875 ({)
+### simple group (level 3) entered at line 875 ({)
 ### simple group (level 2) entered at line 508 ({)
 ### simple group (level 1) entered at line 430 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 3073 strings out of 430478
- 35251 string characters out of 3191502
+ 3070 strings out of 430478
+ 35175 string characters out of 3191502
  112632 words of memory out of 3000000
- 6137 multiletter control sequences out of 15000+200000
+ 6132 multiletter control sequences out of 15000+200000
  52284 words of font info for 65 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,15n,34p,1758b,466s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sig-fault.pdf (16 pages).
+Output written on sig-fault.pdf (18 pages).
