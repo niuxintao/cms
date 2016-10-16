@@ -623,7 +623,7 @@ Then the current faulty schema is the MFS.
 It is easily to obtain the following algorithm :
 
 \begin{algorithm}
-  \caption{MFS identification}
+  \caption{Basic MFS identification}
   \begin{algorithmic}[1]
      \Require  $t$ \Comment{failing test case}
 
@@ -640,7 +640,7 @@ It is easily to obtain the following algorithm :
         \State $Cfs \leftarrow CMFS(FSS^{\bot}, t) $
         \State $Chs \leftarrow CMHS(HSS^{\top}, t) $
 %        \State $Pss = $
-        \State $s_{p} \leftarrow obtain (Cfs, Chs)$
+        \State $s_{p} \leftarrow \textbf{obtain} (Cfs, Chs)$
         \If{$s_{p} == Null$}
             \State $break$
         \Else
@@ -681,7 +681,7 @@ we use binary search,
     \If{$check(list.get(0))$ == Pass }
     \State \Return $-1$
     \EndIf
-    
+
     \State $fIndex \leftarrow 0$
     \State $head  \leftarrow 1$
     \State $tail \leftarrow list.size() - 1 $
@@ -707,10 +707,10 @@ then consider that the pending complexity, to let. we need to make this schema a
 \begin{algorithm}
   \caption{Narrow-down-fs}
   \begin{algorithmic}[1]
-  
-    
+
+
     \Require  $fs$ \Comment{Given faulty schema}
-  
+
       $t$ \Comment{original failing test case}
 
      $HSS^{\top}$ \Comment{Current maximal healthy schema set}
@@ -729,20 +729,22 @@ then consider that the pending complexity, to let. we need to make this schema a
          \If{$list == Null$ }
             \State $break$
          \EndIf
-        
+
         \State $fIndex \leftarrow Binary$-$Search$-$Check(list)$
-       
+
         \If{$fIndex > -1 $}
             \State $CandiMFS \leftarrow list.get(fIndex)$
              \State $FSS^{\bot} \leftarrow update(FSS^{\bot}, CandiMFS)$
         \EndIf
         \State $HSS^{\top} \leftarrow update(HSS^{\top}, list.get(fIndex+1))$
-       
+
     \EndWhile
 %    \State $MFS \leftarrow  CandiMFS$
 %    \State \Return $fIndex$
   \end{algorithmic}
 \end{algorithm}
+
+Note that the schema in algorithm 2 is actually the MFS.
 
 
 Hence, the procedure, is ,  get the longest list (for reduce the pending as possible). Then for the faulty schema go on (to reduce the mfs).
@@ -901,10 +903,27 @@ To alleviate this problem, we augment our MFS identification approach with a fee
 %\end{table*}
 
 \subsection{The number of additional  test cases}
-There are two parts in our approach that need to generate additional test cases. First, when given a candidate MFS, it needs to generate additional test cases to get the real MFS. Second, it needs additional test cases to find the candidate MFS.
+The number of generated additional test cases is an important metric to measure the cost of the adaptive MFS identification approaches. The test cases generated in our algorithm are used to check the pending schemas. Specifically, in our algorithm, there are two parts may generate additional test cases. First, use \emph{ Binary-Search-Check} to find a faulty schema (See line 11 in Algorithm 4); second, use \emph{Narrow-down-fs} to find one minimal faulty schema (See line 16 of Algorithm 4).
 
-For the first part, when given a candidate MFS, according to Algorithm 1, we need to get repeats obtain a list of its pending subschemas and use binary search to check the schemas in this list. If this list happens to contain the real MFS, we only no more than $log_{2}(m)$ test cases to catch this real MFS, where $m$ is the number of parameter values in the candidate MFS. After we catch this real MFS, we still need $d\times log_{2}d$ number of test cases to check whether its subschemas are healthy schemas, where $d$ is the number of parameter values in the real MFS.
+Note that when given a list of ordered pending schemas, the number of test cases for the first part is no more than $log_{2}n$, where $n$ is the number of parameters in the SUT (The list obviously consists no more than $n$ pending schemas).
 
+With respect to the second part, it is easy to observe that \emph{Narrow-down-fs} repeatedly call \emph{Binary-Search-Check}. Each time it calls call \emph{Binary-Search-Check}, it actually isolates one failure-inducing factor. This is because \emph{Binary-Search-Check} return the index of the minimal faulty schema in the ordered list of schema, and the schema that is next to this minimal faulty schema is a healthy schema. Note that two schemas that are next to each other only have one parameter value that is different. For example, considering the first pending list in Fig \ref{fig_exofalo}, the consecutive schemas \{$(p_{2}, 1), (p_{3}, 1)$\} and \{$(p_{2}, 1)$\}  only have one parameter value \{$(p_{3}, 1)$\} that is different.  Based on this, the difference between the minimal faulty schema and the heathy schema is only one parameter value, which must be failure-inducing factor according to Nie's work \cite{nie2011minimal}. Consequently, for the second part \emph{Narrow-down-fs}, it needs to call \emph{Binary-Search-Check} at most $d - 1$ times to obtain the MFS, where $d$ is the degree of the MFS. Note that here the iteration number is not $d$, because before we execute the second part \emph{Narrow-down-fs}, \emph{Binary-Search-Check} has already execute once in the first part, and one failure-inducing factor must has already be located. Hence, the number of test cases that are needed by the second part is no more than $(d - 1) \times log_{2}n$.
+
+
+Next we need to consider how many times will these two parts be executed. For the second part, it needs to execute $k$ times, where $k$ is the number of MFS in the failing test case. This is because, each time \emph{Narrow-down-fs} is called, it will finally return a MFS.  Hence, there needs $k \times (d - 1) \times log_{2}n$
+
+With respect to the first part, besides $k$ times that it is needed to be called to detect the faulty schemas, it still needs more test cases to ensure that the remaining schemas are not faulty. This number is no more than the number of schemas in $CMXS(FSS^{\bot}, t)$, in which the schemas in this set are candidate maximal pending schemas. According to the definition of CMXS, this number is no more than $d^{2}$, where $d$ is the degree of the MFS. As these schemas are healthy schemas, \emph{Binary-Search-Check} function only needs 1 additional test case (Only check the first schema in the list). Finally, there is $k \times log_{2}n +  d^{2} $ in total for the second part.
+
+At last, the number of test cases generated by the first part and second part is no more than $k \times (d - 1) \times log_{2}n$ + $k \times log_{2}n$ + $d^{2} $ =
+$k \times d \times log_{2}n + d^{2} $.  Append the additional test cases for re-check each MFS (For alleviation of assumption 3), the total number needed by our algorithm is no more than $k \times d \times log_{2}n + d^{2} + d $.
+
+%Combining these two facts together, to identify one MFS, no more than $d \times log_{2}n$ test cases are needed. If there is $k$ MFS in total in the failing test case, it needs no more than $k \times d \times log_{2}n$ test cases.
+
+%However, this is not the end
+
+
+%For the first part, when given a candidate MFS, according to Algorithm 1, we need to get repeats obtain a list of its pending subschemas and use binary search to check the schemas in this list. If this list happens to contain the real MFS, we only no more than $log_{2}(m)$ test cases to catch this real MFS, where $m$ is the number of parameter values in the candidate MFS. After we catch this real MFS, we still need $d\times log_{2}n! + $ number of test cases to check whether its subschemas are healthy schemas, where $d$ is the number of parameter values in the real MFS.
+%
 
 %This is because in we need to genrate maxmail list, which is equal to t. and for each list, we use binary search, so we need to log2t to get the maximal list. For each
 %By the way, through to obtain this MFS, are still need to $log_{2}n$
@@ -939,17 +958,17 @@ At last, Column ``MFS introduce'' shows whether the approach can deal with the n
 
   \hline
     OFOT & n  & 1$\sim$n & single & $\oslash$ \\
-    FIC\_BS & $k \times (d \times (log_{2}(n) + 1))$ & 1$\sim$n & multiple, none overlapped  & $\oslash$ \\
+    FIC\_BS & $\leq$ $k \times (d \times (log_{2}(n) + 1))$ & 1$\sim$n & multiple, none overlapped  & $\oslash$ \\
     LG & $k \times log_{2}(n) + k^{2}$  & 2 &  multiple & $\oslash$ \\
     SP & $\geq$ n  & $\leq$ d & multiple & $\odot$\\
     CTA & n  & 1$\sim$n  & single & $\oslash$  \\
-    RI & $\geq$ $ k \times (d \times (log_{2}(n) + 1))$  & 1$\sim$n &  multiple, none overlapped  & $\oslash$  \\
+    RI & $ k \times (d \times (log_{2}(n) + 1))$  & 1$\sim$n &  multiple, none overlapped  & $\oslash$  \\
     AIFL & $\leq$ $2^{n}$  & 1$\sim$n & multiple, none overlapped  & $\oslash$  \\
-    TRT & -  & 1$\sim$n & multiple & $\oslash$  \\
-    TRTNA   & - & 1$\sim$n & multiple & $\odot$  \\
+    TRT & $k \times d \times log_{2}n + d^{2}$  & 1$\sim$n & multiple & $\oslash$  \\
+    TRTNA   & $3 (\times k \times d \times log_{2}n + d^{2})$ & 1$\sim$n & multiple & $\odot$  \\
 
       \hline
-    CMS & O(log(n)) & 1$\sim$n & multiple   &  $\odot$ \\
+    CMS & $k \times d \times log_{2}n + d^{2} + d$ & 1$\sim$n & multiple   &  $\odot$ \\
 
   \hline
   \end{tabular}
@@ -1109,7 +1128,7 @@ In this section, we will conduct the empirical study on several real-life softwa
 \subsection{Subject programs}\label{sec:subject}
 The subject programs used in our experiments are listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``Version" indicates the specific version that is used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``Faults" presents the fault ID, which is used as the index to fetch the original fault description from the bug tracker for that software. Column ``Lan" shows the programming language for each software (For subjects written in more than one programming language, only the main programming language is shown).  We select these software as subjects because their behaviours are influenced by various combinations of configuration options or inputs. For example, the component \emph{connector} of Tomcat is influenced by more than 151 attributes \cite{tomcatconnector}.
 
-\begin{table}[ht]
+\begin{table}[!htb]
 \caption{Subject programs}
 \label{subject}
 \centering
@@ -1163,7 +1182,7 @@ A brief overview of the input models as well as the corresponding MFS (degree) i
 %As our study is focus on combinatorial testing,
 % we must take the faults,  Some faults we collected are it. To let our CT model more applied. We add some additional options that can happen interactive events to them. We let them . To get the real MFS, note that the additional , we need to exhaustive execute all the test cases, so that we limited them at a moderate level.
 
-\begin{table}[ht]
+\begin{table}[!htb]
 \caption{Inputs model }
 \label{inputs}
 \centering
@@ -1209,10 +1228,10 @@ Figure \ref{fig_realNum} depicts the number of generated test cases of each appr
 From this figure, we can learn that approaches AIFL, and SP generated much more test cases than the remaining approaches.  Approaches TRT, LG, FIC\_BS, needed the smallest number of test cases. The remaining approaches are in between. It is noted that our approach performed good for subjects 1, 4, 6, 7, and 8, but needed many test cases for subjects 2, 3, 5, and 9. We believe this is because for those subjects, there are too many faults (there are 2, 4, 3, and 6 MFSs for these subjects) in their test cases, which may result in many new MFS introducing problem such that our approach repeated checking the results.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet1'
-\begin{table}[htbp]
+\begin{table*}[!ht]
   \centering
   \caption{The precision of approaches for 9 real-life software }
-  \addtolength{\tabcolsep}{-1pt}
+%  \addtolength{\tabcolsep}{-1pt}
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c} \hline
     App   & \multicolumn{9}{c}{Precision} \\ \hline
     CMS   & 0.7   & \textbf{1} & 0.58  & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{1} & 0.27 \\
@@ -1227,14 +1246,14 @@ From this figure, we can learn that approaches AIFL, and SP generated much more 
     CTA   & 0     & 0.67  & 0.22  & 1     & 0.67  & \textbf{1} & \textbf{1} & \textbf{1} & 0.43 \\ \hline
     \end{tabular}%
   \label{tab:precise}%
-\end{table}%
+\end{table*}%
 
 
 % Table generated by Excel2LaTeX from sheet 'Sheet2'
-\begin{table}[htbp]
+\begin{table*}[!ht]
   \centering
   \caption{The recall of approaches for 9 real-life software }
-   \addtolength{\tabcolsep}{-1pt}
+ %  \addtolength{\tabcolsep}{-1pt}
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c} \hline
     App  & \multicolumn{9}{c}{Recall} \\ \hline
     CMS   & 0.33  & 0.75  & \textbf{0.38} & \textbf{1} & \textbf{0.67} & \textbf{1} & \textbf{1} & \textbf{1} & 0.15 \\
@@ -1249,7 +1268,7 @@ From this figure, we can learn that approaches AIFL, and SP generated much more 
     CTA   & 0.33  & \textbf{1} & 0.25  & \textbf{1} & \textbf{0.67} & \textbf{1} & \textbf{1} & \textbf{1} & 0.14 \\ \hline
     \end{tabular}%
   \label{tab:recall}%
-\end{table}%
+\end{table*}%
 
 %The results are shown in table \ref{compare-casestudy}. In this table, Column "exp\ ID" still means the ID for the specific exception. Column "algorithm" gives the specific algorithm measured in this row. Column "num of extra configs" shows the average number of extra configurations needed to generate to identify the MFSs. Column "recall" and "precise" respectively shows the average recall and precise which have been defined in the simulated experiment for each algorithm.
 
