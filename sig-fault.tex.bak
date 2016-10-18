@@ -461,7 +461,7 @@ For example, let $t$ = \{$(p_{1},v_{1}), (p_{2}, v_{2}), (p_{3}, v_{3})$\}, $c_{
 Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of faulty schemas FSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we denote the candidate maximal pending schema of this set as CMXS(FSS,t)= $\bigwedge_{c_{i}\in FSS} CMXS(c_{i}, t)$.
 \end{definition}
 
-Note to compute the CMXS of a set of faulty schema, we just need to sequentially compute the CMXS of two faulty schemas until the last schema in this set is computed. Hence, the complexity of obtaining CMXS of a set of faulty schema is O($ \tau^{|FSS|}$), where |FSS| is the number of faulty schemas in the schema set, and $\tau$ is the degree of the schema. According to Proposition \ref{pro:subofCMXS}, we have:
+Note to compute the CMXS of a set of faulty schema, we just need to sequentially compute the CMXS of two faulty schemas until the last schema in this set is computed. Hence, the complexity of obtaining CMXS of a set of faulty schema is O($\tau^{|FSS|}$), where |FSS| is the number of faulty schemas in the schema set, and $\tau$ is the degree of the schema. According to Proposition \ref{pro:subofCMXS}, we have:
 
 \begin{proposition}\label{pro:subofCMXSfor2}
 Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of faulty schemas FSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we have \{$c\ |\ c \preceq t\ \&\&\ \forall c_{i} \in FSS, c_{i} \npreceq c $\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$\}.
@@ -538,7 +538,7 @@ Based on this, we denote CMNS(HSS,t) for a set of faulty schemas.
 Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, $ $v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of healthy schemas HSS = \{$c_{1} , c_{2},$ $  ...c_{i}, ...$\}, where $ c_{i} \preceq t$, we denote the candidate minimal pending schema of this set as CMNS(HSS,t)= $ $ $\bigvee_{c_{i}\in HSS}$ $ CMNS(c_{i}, t)$.
 \end{definition}
 
-Similar to CMXS(FSS,t), the complexity to obtain CMNS(HSS,t) is O($|HSS| \times \tau^{2}$), where |HSS| is the number of healthy schemas in the schema set, and $\tau$ is the degree of the schema. With respect to CMNS(HSS,t), we have:
+Similar to CMXS(FSS,t), the complexity to obtain CMNS(HSS,t) is O($\tau^{|HSS|}$), where |HSS| is the number of healthy schemas in the schema set, and $\tau$ is the degree of the schema. With respect to CMNS(HSS,t), we have:
 
 \begin{proposition}\label{pro:superofCMNS2}
 Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of healthy schemas HSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in HSS, c \npreceq c_{i} $\} $=$  \{$ c\ |\ c \prec t \ \&\& \ \exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}.
@@ -589,7 +589,7 @@ PSS = & \{ c\ |\ \exists c_{1}' \in CMXS(FSS, t), c_{2}' \in CMNS(HSS, t), \\
 %PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
 \end{equation}
 
-According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($|FSS|\times \tau^{2} \times |HSS|\times \tau^{2}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(FSS, t)$ and $CMNS(HSS, t)$, of which the complexity are O($|FSS|\times \tau^{2}$) and O($\times |HSS|\times \tau^{2}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(FSS, t)$, $c_{2} \in CMNS(HSS, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($|FSS|\times \tau^{2} \times |HSS|\times \tau^{2}$).
+According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($ \tau^{|FSS|} \times \tau^{|HSS|}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(FSS, t)$ and $CMNS(HSS, t)$, of which the complexity are O($\tau^{|FSS|}$) and O($\tau^{|HSS|}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(FSS, t)$, $c_{2} \in CMNS(HSS, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($\tau^{|FSS|} \times \tau^{|HSS|}$).
 
 In fact, we can further reduce the complexity of obtaining pending schemas. When given a set of schemas $S$, let the minimal schemas as $S^{\bot } = \{ c | c \in S, \nexists c' \in S, c' \prec c \}$ and the maximal schemas as $S^{\top } = \{ c | c \in S, \nexists c' \in S, c \prec c' \}$. Based on this, we can have the following proposition:
 
@@ -607,22 +607,24 @@ PSS = & \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\t
 %PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
 \end{equation}
 
-According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is is O($|FSS^{\bot}|\times \tau^{2} \times |HSS^{\top}|\times \tau^{2}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ is a relatively small number during MFS identification.
+According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ is a relatively small number during MFS identification.
 
 
 
 \subsection{Identify the MFS}
+To identify the MFS, according to Definition \ref{de:faulty:minimal}, we need to obtain a faulty schema, and make sure that all of its subschemas are healthy schemas. For this aim, we need to obtain the pending schemas and then classify them into faulty or healthy. As we have already given the method to obtain the pending schema, it is easy to get the following algorithm to identify the MFS.
+
+%Such MFS may not be obtained directly in the beginning or during the process of MFS identification for a failing test case. In most cases, what we can obtain are those intermediate results, i.e., faulty schemas with some of their subschemas are pending schemas or healthy schemas. We will call intermediate schemas the \emph{candidate MFS} later. Note that if any subschema of the candidate MFS is found to faulty schema, it will be disqualified as candidate MFS. Instead, its faulty subschema will be regarded as the new candidate MFS. With this in mind, to identify the MFS in a failing test case, we firstly need to obtain some candidate MFS, and then make sure whether they are MFS or their subschemas are MFS.
+%
+%
+%1. No pending.
+%
+%2. No faulty schema is the subschema of currently faulty schemas.
+%
+%Then the current faulty schema is the MFS.
 
 
-1. No pending.
-
-2. No faulty schema is the subschema of currently faulty schemas.
-
-Then the current faulty schema is the MFS.
-
-It is easily to obtain the following algorithm :
-
-\begin{algorithm}
+\begin{algorithm}[!htb]
   \caption{Basic MFS identification}
   \begin{algorithmic}[1]
      \Require  $t$ \Comment{failing test case}
@@ -654,20 +656,16 @@ It is easily to obtain the following algorithm :
   \end{algorithmic}
 \end{algorithm}
 
-In this algorithm, $HSS^{\top}$ is the maximal set of healthy schemas, and is initially to be empty (line 1). $FSS^{\bot}$ is the minimal set of faulty schemas, and is initially assigned to have test case $t$ (line 2). In the loop (line 3 - 14), we firstly obtaining one pending schema (line 4 - 6).  Note that $s_{p}$ must satisfy Formula \ref{eq:pssthird}, i.e., $s_{p} \in$ PSS = \{$ c\ |\ \exists c_{1}' \in Cfs$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in Chs$, $c_{1}' \preceq c$\}. In the implementation of our algorithm, we do not need to obtain all the pending schemas; instead, we just need to get one schema that is in this set. If none schema can be obtained (line 7) (indicating that there is none un-determined schema), we will break the loop (line 8), and output the MFS (line 15). Otherwise, we will check this schema to be faulty or healthy (line 10), and then update $FSS^{\bot}$ and $HSS^{\top}$ (line 11).
+In this basic algorithm, $HSS^{\top}$ is the maximal set of healthy schemas, and is initially to be empty (line 1). $FSS^{\bot}$ is the minimal set of faulty schemas, and is initially assigned to have test case $t$ (line 2). In the loop (line 3 - 14), we firstly obtaining one pending schema (line 4 - 6).  Note that $s_{p}$ must satisfy Formula \ref{eq:pssthird}, i.e., $s_{p} \in$ PSS = \{$ c\ |\ \exists c_{1}' \in Cfs$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in Chs$, $c_{1}' \preceq c$\}. In the implementation of our algorithm, we do not need to obtain all the pending schemas; instead, we just need to get one schema that is in this set. If none schema can be obtained (line 7) (indicating that all the schemas are classified into healthy or faulty), we will break the loop (line 8), and output the MFS (line 15). Otherwise, we will check this schema to be faulty or healthy (line 10), and then update $FSS^{\bot}$ and $HSS^{\top}$ (line 11).
 
-It is noted that, in Algorithm 1, we do not describe which pending schema $s_{p}$ is obtained from the pending schemas set PSS.  How to select one pending schema is important, as it will significantly influence the speed of convergence of this algorithm, as well as number of pending schemas we need to check to get the MFS. More specifically, considering the Consider the following two facts
+It is noted that, in Algorithm 1, we did not describe which pending schema $s_{p}$ is obtained from the pending schemas set PSS. How to select one pending schema is important, as it will significantly influence the speed of convergence of this algorithm, as well as number of pending schemas that need to be checked. To better illustrate the complete MFS identification algorithm with pending schema selection, we will first introduce two auxiliary algorithms.
 
+The first algorithm aims at checking all the schemas in a list of ordered pending schemas \{$c_{1}$, $c_{2}$, $c_{i}$, ..., $c_{k}$\}, where $c_{i} \prec c_{i+1}$.  Note that we do not necessary check them one by one. This is because according to Proposition \ref{pro:superoffaulty}, if one schema is checked to be faulty, then all its super schemas are faulty schemas as well.  On the other hand, according to Proposition \ref{pro:subofhealthy}, if one schema is checked to be healthy, then all its subschemas are also healthy schemas.
 
-In this paper, we use binary search strategy to select a pending schema. Formally, let $c_{1} \in CMFS(FSS, t)$ and $c_{2} \in CMHS(HSS, t)$, which satisfy that $c_{1} \preceq c_{2}$. Then according to proposition \ref{pro:pending}, $\forall c_{3}, c_{1} \prec c_{3} \prec c_{2}$, $c_{3}$ is a pending schema. Without loss of generality, we can get an ordered set of pending schemas as \{ $c_{1}$, $c_{3_{1}}$, $c_{3_{2}}$, ..., $c_{3_{i}}$, ..., $c_{2}$ \}, where $c_{1} \prec c_{3_{1}} \prec c_{3_{2}}  ... c_{3_{i}}  \prec c_{2}$.  Then at each iteration, we will select the middle element in the ordered set and check it. According to Propositions \ref{pro:subofhealthy} and \ref{pro:superoffaulty}, after we determined it to be healthy or faulty, we can determine half number of schemas in this ordered set of pending schemas to be healthy or faulty. Then we will update this ordered set and repeat the binary search selecting process until all the schemas in this set are determined. Note that, to fully take advantage of binary search, we need to make this ordered set as large as possible. Hence, at the first of this selecting procedure, we need to select $c_{1} \in CMFS(FSS, t)$ and $c_{2} \in CMHS(HSS, t)$, such that $c_{1} \preceq c_{2}$, and $|c_{1}| - |c_{2}|$ as large as possible.
-
-
-proposistion 1 and 3
-
-we use binary search,
+Combining these two facts together, when given a list of ordered pending schemas \{$c_{1}$, $c_{2}$, $c_{i}$, ..., $c_{k}$\}, where $c_{i} \prec c_{i+1}$,  the best strategy is to use binary search to check the pending schema in this list. Algorithm 2 shows the detail of such strategy.
 
 
-\begin{algorithm}
+\begin{algorithm}[!htb]
   \caption{Binary-Search-Check}
   \begin{algorithmic}[1]
      \Require  $list$ \Comment{List of ordered pending schemas}
@@ -678,7 +676,7 @@ we use binary search,
 %    \State $\mathcal{S_{UPS}} \leftarrow getUPS(\mathcal{T},\mathcal{S_{CMINFS}},\mathcal{S_{CMAXHS}}) $
 %    \State $\mathcal{S_{DOWNS}} \leftarrow getDOWNS(\mathcal{T},\mathcal{S_{CMINFS}},\mathcal{S_{CMAXHS}}) $
 %    \State $HSS^{\top} \leftarrow \{\}$
-    \If{$check(list.get(0))$ == Pass }
+    \If{$check(list.get(0))$ == Healthy }
     \State \Return $-1$
     \EndIf
 
@@ -700,11 +698,14 @@ we use binary search,
   \end{algorithmic}
 \end{algorithm}
 
+The input to Algorithm 2 is a list of ordered pending schemas $list$. The output of this algorithm is index of the minimal faulty schema in this set. In this algorithm, it firstly checks the first schema in $list$ (line 1). If this schema is checked to be healthy (line 2), it will return -1 (line 2), which indicates that there are no faulty schemas in this list. Otherwise, it will use binary search strategy to isolate the minimal faulty schema in this set (line 4 - 16). Specifically, it uses head and tail indexes (line 5 - 6) to record the first and last pending schemas, respectively, at each iteration. At each time, it selects the schema with its index in the middle between head and tail indexes (line 8 - 9). If it is checked to be faulty (line 10), we assign the head index to the next location of current middle index (line 11). This is because, all the schemas with index smaller than the middle index are super-schemas of selected schema, which are faulty schemas according to Proposition \ref{pro:superoffaulty}. Additionally, we will assign the index of the minimal faulty schema to the current middle index (line 12). If the schema is checked to be healthy, we will update the tail index to the previous location of the middle index (line 14). This is because all the schemas after the middle index are subschemas of the selected schema, which are healthy schemas according to Proposition \ref{pro:subofhealthy}.
 
-then consider that the pending complexity, to let. we need to make this schema as small as possible.
+Note that the minimal faulty schema which are returned by Algorithm 2 is not necessary a MFS . This is because, we only actually checked all the schemas in the ordered pending schemas. Other sub-schemas of this minimal faulty schema may still be pending schemas. Hence, to obtain the MFS, we need to second auxiliary Algorithm. Algorithm 3 depicts the  
+
+%then consider that the pending complexity, to let. we need to make this schema as small as possible.
 
 
-\begin{algorithm}
+\begin{algorithm}[!htb]
   \caption{Narrow-down-fs}
   \begin{algorithmic}[1]
 
@@ -744,7 +745,7 @@ then consider that the pending complexity, to let. we need to make this schema a
   \end{algorithmic}
 \end{algorithm}
 
-Note that the schema in algorithm 2 is actually the MFS.
+%Note that the schema in algorithm 2 is actually the MFS.
 
 
 Hence, the procedure, is ,  get the longest list (for reduce the pending as possible). Then for the faulty schema go on (to reduce the mfs).
@@ -752,19 +753,13 @@ Hence, the procedure, is ,  get the longest list (for reduce the pending as poss
 
 
 %First give the MFS definition, according to the pending schema. Just how to get pending schema. Two steps.
-To identify the MFS, according to Definition \ref{de:faulty:minimal}, we need to obtain a faulty schema, and make sure that all of its subschemas are healthy schemas. Such MFS may not be obtained directly in the beginning or during the process of MFS identification for a failing test case. In most cases, what we can obtain are those intermediate results, i.e., faulty schemas with some of their subschemas are pending schemas or healthy schemas. We will call intermediate schemas the \emph{candidate MFS} later. Note that if any subschema of the candidate MFS is found to faulty schema, it will be disqualified as candidate MFS. Instead, its faulty subschema will be regarded as the new candidate MFS. With this in mind, to identify the MFS in a failing test case, we firstly need to obtain some candidate MFS, and then make sure whether they are MFS or their subschemas are MFS.
+%To identify the MFS, according to Definition \ref{de:faulty:minimal}, we need to obtain a faulty schema, and make sure that all of its subschemas are healthy schemas. Such MFS may not be obtained directly in the beginning or during the process of MFS identification for a failing test case. In most cases, what we can obtain are those intermediate results, i.e., faulty schemas with some of their subschemas are pending schemas or healthy schemas. We will call intermediate schemas the \emph{candidate MFS} later. Note that if any subschema of the candidate MFS is found to faulty schema, it will be disqualified as candidate MFS. Instead, its faulty subschema will be regarded as the new candidate MFS. With this in mind, to identify the MFS in a failing test case, we firstly need to obtain some candidate MFS, and then make sure whether they are MFS or their subschemas are MFS.
+%
 
-Next, we will first introduce how to identify the MFS when given one candidate MFS. The key is to obtain all of its subschemas that are still pending schemas, and check them. Note that we do not necessary check them one by one. This is because according to Proposition \ref{pro:subofhealthy}, we just need to find and check some of its subschemas, and if these schemas are healthy schemas, their subschemas are healthy schemas as well. Based on this, it seems that the degree of selected subschemas should be as big as possible, as the schemas with bigger degree will have more subschemas.
+%Next, we will first introduce how to identify the MFS when given one candidate MFS. The key is to obtain all of its subschemas that are still pending schemas, and check them. Note that we do not necessary check them one by one. This is because according to Proposition \ref{pro:subofhealthy}, we just need to find and check some of its subschemas, and if these schemas are healthy schemas, their subschemas are healthy schemas as well. Based on this, it seems that the degree of selected subschemas should be as big as possible, as the schemas with bigger degree will have more subschemas.
 
 %For example, considering a candidate schema. To illustrate their relationship, we use a grap to depci. as fig. Note that if is an candidate MFS, and all its subschemas are subschemas are healthy.
 
-%
-%However, to get all the is in the . That is, if we find some schema is a faulty schema, then we will turn on to its subschema. In the worst cases, this procedure will continue on the subschema with only one degree.
-
-On the other hand, however, selecting high-degree subschemas is inefficient when the currently analysed candidate MFS is not a real MFS. That is, if any of its subschemas is found to be faulty schema, this schema is not a MFS and we should be turn our analysis on its faulty subschema. Note that if we always select its biggest subschema, we need to repeated this process until we find the real MFS. In the worst cases, we may check each of its subschema to find the real MFS. Hence, to reduce the number of trails to obtain the real MFS, we should find its pending subschema with the degree as small as possible. If this schema is faulty schema, then according to Proposition \ref{pro:superoffaulty}, all its super schemas are faulty schemas. By doing so, we can directly obtain the minimal faulty schema without checking each subschema of the original candidate MFS.
-
-Combining these two facts together, the best strategy is to use binary search to check the pending subschema of one candidate MFS. %Specifically,
-Algorithm 1 shows the detail of such strategy, as well as the complete process of how to identify the MFS when given one candidate MFS.
 
 %Combining these two facts together, the best strategy is to use binary search to check the pending subschema of one candidate MFS. Algorithm \ref{al:identifyOneMFS} shows the detail of such strategy, as well as the complete process of how to identify the MFS when given one candidate MFS.
 
@@ -907,15 +902,15 @@ The number of generated additional test cases is an important metric to measure 
 
 Note that when given a list of ordered pending schemas, the number of test cases for the first part is no more than $log_{2}n$, where $n$ is the number of parameters in the SUT (The list obviously consists no more than $n$ pending schemas).
 
-With respect to the second part, it is easy to observe that \emph{Narrow-down-fs} repeatedly call \emph{Binary-Search-Check}. Each time it calls call \emph{Binary-Search-Check}, it actually isolates one failure-inducing factor. This is because \emph{Binary-Search-Check} return the index of the minimal faulty schema in the ordered list of schema, and the schema that is next to this minimal faulty schema is a healthy schema. Note that two schemas that are next to each other only have one parameter value that is different. For example, considering the first pending list in Fig \ref{fig_exofalo}, the consecutive schemas \{$(p_{2}, 1), (p_{3}, 1)$\} and \{$(p_{2}, 1)$\}  only have one parameter value \{$(p_{3}, 1)$\} that is different.  Based on this, the difference between the minimal faulty schema and the heathy schema is only one parameter value, which must be failure-inducing factor according to Nie's work \cite{nie2011minimal}. Consequently, for the second part \emph{Narrow-down-fs}, it needs to call \emph{Binary-Search-Check} at most $d - 1$ times to obtain the MFS, where $d$ is the degree of the MFS. Note that here the iteration number is not $d$, because before we execute the second part \emph{Narrow-down-fs}, \emph{Binary-Search-Check} has already execute once in the first part, and one failure-inducing factor must has already be located. Hence, the number of test cases that are needed by the second part is no more than $(d - 1) \times log_{2}n$.
+With respect to the second part, it is easy to observe that \emph{Narrow-down-fs} repeatedly call \emph{Binary-Search-Check}. Each time it calls call \emph{Binary-Search-Check}, it actually isolates one failure-inducing factor. This is because \emph{Binary-Search-Check} return the index of the minimal faulty schema in the ordered list of schema, and the schema that is next to this minimal faulty schema is a healthy schema. Note that two schemas that are next to each other only have one parameter value that is different. For example, considering the first pending list in Fig \ref{fig_exofalo}, the consecutive schemas \{$(p_{2}, 1), (p_{3}, 1)$\} and \{$(p_{2}, 1)$\}  only have one parameter value \{$(p_{3}, 1)$\} that is different.  Based on this, the difference between the minimal faulty schema and the heathy schema is only one parameter value, which must be failure-inducing factor according to Nie's work \cite{nie2011minimal}. Consequently, for the second part \emph{Narrow-down-fs}, it needs to call \emph{Binary-Search-Check} at most $\tau - 1$ times to obtain the MFS, where $\tau$ is the degree of the MFS. Note that here the iteration number is not $\tau$, because before we execute the second part \emph{Narrow-down-fs}, \emph{Binary-Search-Check} has already execute once in the first part, and one failure-inducing factor must has already be located. Hence, the number of test cases that are needed by the second part is no more than $(\tau - 1) \times log_{2}n$.
 
 
-Next we need to consider how many times will these two parts be executed. For the second part, it needs to execute $k$ times, where $k$ is the number of MFS in the failing test case. This is because, each time \emph{Narrow-down-fs} is called, it will finally return a MFS.  Hence, there needs $k \times (d - 1) \times log_{2}n$
+Next we need to consider how many times will these two parts be executed. For the second part, it needs to execute $k$ times, where $k$ is the number of MFS in the failing test case. This is because, each time \emph{Narrow-down-fs} is called, it will finally return a MFS.  Hence, there needs $k \times (\tau - 1) \times log_{2}n$
 
-With respect to the first part, besides $k$ times that it is needed to be called to detect the faulty schemas, it still needs more test cases to ensure that the remaining schemas are not faulty. This number is no more than the number of schemas in $CMXS(FSS^{\bot}, t)$, in which the schemas in this set are candidate maximal pending schemas. According to the definition of CMXS, this number is no more than $k\times d^{2}$, where $d$ is the degree of the MFS. As these schemas are healthy schemas, \emph{Binary-Search-Check} function only needs 1 additional test case (Only check the first schema in the list). Finally, there is $k \times log_{2}n +  d^{2} $ in total for the second part.
+With respect to the first part, besides $k$ times that it is needed to be called to detect the faulty schemas, it still needs more test cases to ensure that the remaining schemas are not faulty. This number is no more than the number of schemas in $CMXS(FSS^{\bot}, t)$, in which the schemas in this set are candidate maximal pending schemas. According to the definition of CMXS, this number is no more than $\tau^{k}$, where $\tau$ is the degree of the MFS. As these schemas are healthy schemas, \emph{Binary-Search-Check} function only needs 1 additional test case (Only check the first schema in the list). Finally, there is $k \times log_{2}n +  \tau^{k}$ in total for the second part.
 
-At last, the number of test cases generated by the first part and second part is no more than $k \times (d - 1) \times log_{2}n$ + $k \times log_{2}n$ + $d^{2} $ =
-$k \times d \times log_{2}n + d^{2} $.  Append the additional test cases for re-check each MFS (For alleviation of assumption 3), the total number needed by our algorithm is no more than $k \times d \times log_{2}n + d^{2} + d $.
+At last, the number of test cases generated by the first part and second part is no more than $k \times (\tau - 1) \times log_{2}n$ + $k \times log_{2}n$ + $\tau^{k} $ =
+$k \times \tau \times log_{2}n + \tau^{k} $.  Append the additional test cases for re-check each MFS (For alleviation of assumption 3), the total number needed by our algorithm is no more than $k \times \tau \times log_{2}n + \tau^{k} + k $.
 
 %Combining these two facts together, to identify one MFS, no more than $d \times log_{2}n$ test cases are needed. If there is $k$ MFS in total in the failing test case, it needs no more than $k \times d \times log_{2}n$ test cases.
 
@@ -947,7 +942,7 @@ There are several approaches that aim at identifying the MFS, which can be class
 
 (1) OFOT \cite{nie2011minimal} -- It changes one factor of a test case one time to generate a new test case and then analyse the MFSs according to the executed result of these test cases. (2) FIC\_BS \cite{zhang2011characterizing} -- It uses a delta debugging strategy to isolate the MFSs (3) LG \cite{martinez2008algorithms,martinez2009locating} -- It uses a locatable graph to represent the faulty schema and adopts the divide and conquer strategy to find the MFSs. (4) SP\cite{ghandehari2012identifying} -- It generates test cases for the most suspicious schemas and gives a rank of these schemas. (5) CTA\cite{shakya2012isolating}, it combines the OFOT approach and the classified tree technique which is firstly applied in research \cite{yilmaz2006covering}  to analyse the MFSs. (6) RI \cite{li2012improved} -- It also uses delta debugging, but mutates a different factors  when compared with FIC\_BS. (7) AIFL \cite{wang2010adaptive} -- It extends OFOT, which changes different number of factors instead of one at each iteration for a test case. (8) TRT \cite{niu2013identifying} and (9) TRTNA \cite{niu2013identifying} --  They use a structured tree model to analyse the MFSs in a failing test case.  More details of these algorithms will be discussed in the related works. (10) Furthermore, our approach in this comparison will be denoted as CMS, which represents Candidate Minimal$\//$Maximal pending Schemas.
 
-With respect to \emph{SP}, the degree of MFS set for this algorithm is 2 (except for the last group of experiment, which is 4 instead). We list a overview of these approaches in Table \ref{comparison-metrics}. In this table, Column ``Tests'' lists the number of additional test cases generated by each approach. These number vary from different approaches, and are related to the number of parameters, i.e., $n$, in the SUT, the number of MFS, i.e., $k$, to be identified, and the degree of MFS, i.e., $d$. Column ``Degree'' shows the degree of MFS that each approach can identify. We can learn that almost all the approaches can identify the MFS with degree ranges from 1 to $n$, except approach ``LG'', which can only identify the MFS with degree 2, and approach SP, which can only identify the MFS with degree no more than a given number $t$.  Column ``Multiple'' indicates that whether the approach can handle the condition that a failing test case contain multiple MFS. Result ``Multiple'' shows that the corresponding approach can handle such condition, while ``Single'' indicates that the approach cannot handle this type of test case. Note that some approaches can only handle the condition that multiple MFS have no overlapped part (has no same parameter value). These approaches will be labeled with ``none overlapped''.
+With respect to \emph{SP}, the degree of MFS set for this algorithm is 2 (except for the last group of experiment, which is 4 instead). We list a overview of these approaches in Table \ref{comparison-metrics}. In this table, Column ``Tests'' lists the number of additional test cases generated by each approach. These number vary from different approaches, and are related to the number of parameters, i.e., $n$, in the SUT, the number of MFS, i.e., $k$, to be identified, and the degree of MFS, i.e., $\tau$. Column ``Degree'' shows the degree of MFS that each approach can identify. We can learn that almost all the approaches can identify the MFS with degree ranges from 1 to $n$, except approach ``LG'', which can only identify the MFS with degree 2, and approach SP, which can only identify the MFS with degree no more than a given number $t$.  Column ``Multiple'' indicates that whether the approach can handle the condition that a failing test case contain multiple MFS. Result ``Multiple'' shows that the corresponding approach can handle such condition, while ``Single'' indicates that the approach cannot handle this type of test case. Note that some approaches can only handle the condition that multiple MFS have no overlapped part (has no same parameter value). These approaches will be labeled with ``none overlapped''.
 At last, Column ``MFS introduce'' shows whether the approach can deal with the newly introduced MFS in the additional generated test cases. Signal $\oslash$ means that the corresponding approach cannot handle such case, while $\odot$ indicates that the approach is able to deal with it.
 
 \begin{table*}[!htb]
@@ -958,17 +953,17 @@ At last, Column ``MFS introduce'' shows whether the approach can deal with the n
 
   \hline
     OFOT & n  & 1$\sim$n & single & $\oslash$ \\
-    FIC\_BS & $\leq$ $k \times (d \times (log_{2}(n) + 1))$ & 1$\sim$n & multiple, none overlapped  & $\oslash$ \\
+    FIC\_BS & $\leq$ $k \times (\tau \times (log_{2}(n) + 1))$ & 1$\sim$n & multiple, none overlapped  & $\oslash$ \\
     LG & $k \times log_{2}(n) + k^{2}$  & 2 &  multiple & $\oslash$ \\
     SP & $\geq$ n  & $\leq$ d & multiple & $\odot$\\
     CTA & n  & 1$\sim$n  & single & $\oslash$  \\
-    RI & $ k \times (d \times (log_{2}(n) + 1))$  & 1$\sim$n &  multiple, none overlapped  & $\oslash$  \\
+    RI & $ k \times (\tau \times (log_{2}(n) + 1))$  & 1$\sim$n &  multiple, none overlapped  & $\oslash$  \\
     AIFL & $\leq$ $2^{n}$  & 1$\sim$n & multiple, none overlapped  & $\oslash$  \\
-    TRT & $k \times d \times log_{2}n + d^{2}$  & 1$\sim$n & multiple & $\oslash$  \\
-    TRTNA   & $3 (\times k \times d \times log_{2}n + d^{2})$ & 1$\sim$n & multiple & $\odot$  \\
+    TRT & $k \times \tau \times log_{2}n + \tau^{k}$  & 1$\sim$n & multiple & $\oslash$  \\
+    TRTNA   & $3 (\times k \times \tau \times log_{2}n + \tau^{k})$ & 1$\sim$n & multiple & $\odot$  \\
 
       \hline
-    CMS & $k \times d \times log_{2}n + d^{2} + d$ & 1$\sim$n & multiple   &  $\odot$ \\
+    CMS & $k \times \tau \times log_{2}n + \tau^{k} + k$ & 1$\sim$n & multiple   &  $\odot$ \\
 
   \hline
   \end{tabular}
