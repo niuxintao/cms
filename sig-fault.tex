@@ -717,7 +717,7 @@ Note that the minimal faulty schema which are returned by Algorithm 2 is not nec
 
      $FSS^{\bot}$ \Comment{Current minimal faulty schema set}
 
- %    \Ensure  $MFS$ \Comment{MFS in test case t}
+  \Ensure  $MFS$ \Comment{the MFS after narrowing down fs}
 
    \State $CandiMFS \leftarrow fs$
    \State $list \leftarrow \{\}$
@@ -742,13 +742,13 @@ Note that the minimal faulty schema which are returned by Algorithm 2 is not nec
 
     \EndWhile
 %    \State $MFS \leftarrow  CandiMFS$
-%    \State \Return $fIndex$
+   \State \Return $CandiMFS$
   \end{algorithmic}
 \end{algorithm}
 
 %Note that the schema in algorithm 2 is actually the MFS.
 
-The input of this algorithm is a given faulty schema $fs$,  the failing test case $t$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$.
+The input of this algorithm is a given faulty schema $fs$,  the failing test case $t$, current maximal healthy faulty schema set $HSS^{\top}$, current minimal faulty schema set $FSS^{\bot}$. The output of this algorithm is the MFS which is the subschema of $fs$ or $fs$ itself. 
 
 %Its output is the MFS.
 
@@ -757,9 +757,7 @@ In this algorithm, variable $CandiMFS$ records the currently analyzed minimal fa
 
 Algorithm 3 loops until the MFS is identified (line 3 - 16). In this loop, it firstly obtain the candidate maximal pending schemas $Cxs$ (line 4), as well as the candidate minimal pending schemas $Cns$ (line 5). Then, an ordered list of subschemas of this candidate MFS is obtained (line 6). More formally, $list$ = \{$c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$\}, where $c_{i} \prec c_{i+1},  c_{i} \in Cns, c_{i} \in Cxs, c_{i} \prec CandiMFS$. Note that there may be more than one set of schemas that satisfies our requirement, and each time we only select the set with the maximal number of schemas. The reason why we do this is to fully utilize binary search.
 
-If we cannot obtain any sublist (line 7), which means that all the subschemas of the candidate MFS are checked to be healthy, we will then break the loop (line 8).
-
-Otherwise, we will start Algorithm 2 to check all the schemas in this list (line 10). If the algorithm return a index which is large than -1 (line 11), which indicates that there exists a minimal faulty schema in this subschemas list of $CandiMFS$, we will update the $CandiMFS$ to be this new minimal faulty schema (line 12), and also update the current minimal faulty schema set $FSS^{\bot}$ (line 13). It is noted that the next location of this minimal faulty schema must be a healthy schema. Hence, we also need to  update the current maximal healthy schema set $HSS^{\top}$ (line 14).
+If we cannot obtain any sublist (line 7), which means that all the subschemas of the candidate MFS are checked to be healthy, we will then break the loop (line 8), and return the MFS (line 17). Otherwise, we will start Algorithm 2 to check all the schemas in this list (line 10). If the algorithm return a index which is large than -1 (line 11), which indicates that there exists a minimal faulty schema in this subschemas list of $CandiMFS$, we will update the $CandiMFS$ to be this new minimal faulty schema (line 12), and also update the current minimal faulty schema set $FSS^{\bot}$ (line 13). It is noted that the next location of this minimal faulty schema must be a healthy schema. Hence, we also need to  update the current maximal healthy schema set $HSS^{\top}$ (line 14).
 
 With these two auxiliary algorithms, it is easy to describe our complete MFS identification process, which is listed at Algorithm 4.
 
@@ -801,23 +799,21 @@ The input of this algorithm is a failing test case $t$, and the output is the MF
 This algorithm also consists an outer loop (line 3 - 17). In this loop, we first obtain the candidate maximal pending schema set $Cxs$ (line 4) and the candidate minimal pending schema set $Cns$ (line 5). Then a list of ordered pending schema is obtained (line 6). Similar to Algorithm 3, $list$ = \{$c_{1}$, $c_{2}$, $c_{3}$, ..., $c_{m}$\}, where $c_{i} \prec c_{i+1},  c_{i} \in Cns, c_{i} \in Cxs$, and at each iteration, only the list with the maximal number of pending schemas is select. If we cannot obtain such list of pending schemas (line 7), which indicates that all the schemas in the test case are classified into healthy or faulty, we will break the outer loop (line 8), and return the identified MFS (line 18). Otherwise, we will start the Algorithm 2 to check all the schemas in this list (line 10). If there is no faulty schema in this list (line 11), we only need to update the current maximal healthy schema set (line 12); otherwise, we need to start Algorithm 3 to narrow down the minimal faulty schema in the list (line 14), and update the current minimal faulty schema set (line 15).
 
 
-To better illustrate this algorithm, we offer an example. Assume there is a failing test case \{($p_{1}$, 1), ($p_{2}$, 1), ($p_{3}$, 1), ($p_{4}$, 1), ($p_{5}$, 1), ($p_{6}$, 1), ($p_{7}$, 1), ($p_{8}$, 1)\}, and there are two MFS in this failing test case, which are \{($p_{2}$, 1),($p_{3}$, 1)\}, \{($p_{1}$, 1), ($p_{2}$, 1)\}, respectively.  The process of our algorithm can be depicted in Fig \ref{fig_exofalo} and Fig \ref{fig_exofalo2}, in which Fig \ref{fig_exofalo} shows the details of the identification of MFS \{($p_{2}$, 1),($p_{3}$, 1)\}, while Fig \ref{fig_exofalo2} gives an overview of the process for identification both two MFS.
+To better illustrate this algorithm, we offer an example. Assume there is a failing test case \{($p_{1}$, 1), ($p_{2}$, 1), ($p_{3}$, 1), ($p_{4}$, 1), ($p_{5}$, 1), ($p_{6}$, 1), ($p_{7}$, 1), ($p_{8}$, 1)\}, and there are two MFS in this failing test case, which are \{($p_{2}$, 1),($p_{3}$, 1)\}, \{($p_{1}$, 1), ($p_{2}$, 1)\}, respectively. Note that these two MFS have overlapped part \{($p_{2}$, 1)\}, which many existing MFS identification approaches cannot handle \cite{zhang2011characterizing,nie2011minimal}. The process of our algorithm can be depicted in Fig \ref{fig_exofalo} and Fig \ref{fig_exofalo2}, in which Fig \ref{fig_exofalo} shows the details of the identification of MFS \{($p_{2}$, 1),($p_{3}$, 1)\}, while Fig \ref{fig_exofalo2} gives an overview of the process for identification both two MFS.
 
 \begin{figure*}
  \centering
- \includegraphics[width=5.8in]{exof1.eps}
+ \includegraphics[width=5.8in]{exofalo.eps}
  \caption{The process of identification of \{($p_{2}$, 1),($p_{3}$, 1)\}}
  \label{fig_exofalo}
 \end{figure*}
 
-In Fig \ref{fig_exofalo}, we can learn that the current minimal faulty schema set $FSS^{\bot}$ is initially have one schema, i.e., test case \{($p_{1}$, 1), ($p_{2}$, 1), ($p_{3}$, 1), ($p_{4}$, 1), ($p_{5}$, 1), ($p_{6}$, 1), ($p_{7}$, 1), ($p_{8}$, 1)\}, and the current maximal healthy schema set $HSS^{\top}$ is initially assigned to be empty. Then we will obtain a list of ordered pending schemas.  Note that each schema in this set is neither the subschema of any healthy schema nor the super schema of any faulty schema. After this, we start the Algorithm 2 to use binary search strategy to check the schema in this list. In this checking process, only four schemas need to be checked, and the schema \{($p_{2}$, 1), ($p_{3}$, 1)\} is found to be minimal faulty schema in this list. 
+In Fig \ref{fig_exofalo}, we can learn that the current minimal faulty schema set $FSS^{\bot}$ is initially have one schema, i.e., test case \{($p_{1}$, 1), ($p_{2}$, 1), ($p_{3}$, 1), ($p_{4}$, 1), ($p_{5}$, 1), ($p_{6}$, 1), ($p_{7}$, 1), ($p_{8}$, 1)\}, and the current maximal healthy schema set $HSS^{\top}$ is initially assigned to be empty. Then we will obtain a list of ordered pending schemas.  Note that each schema in this set is neither the subschema of any healthy schema nor the super schema of any faulty schema. After this, we start the Algorithm 2 to use binary search strategy to check the schema in this list. In this checking process, only four schemas need to be checked, and the schema \{($p_{2}$, 1), ($p_{3}$, 1)\} is found to be minimal faulty schema in this list.
 
-The next step is to go on narrowing down this faulty schema \{($p_{2}$, 1), ($p_{3}$, 1)\}. In this step, $FSS^{\bot}$ is updated to be \{($p_{2}$, 1), ($p_{3}$, 1)\}, and $HSS^{\top}$ is updated to be \{($p_{2}$, 1)\}. We will still need to obtain a list of pending schemas, in which each schema is the subschema of \{($p_{2}$, 1), ($p_{3}$, 1)\}. Finally, only \{($p_{3}$, 1)\} satisfies this requirement.  Next we also need to start the binary search process to check the schema in this list. As there exists only one schema in this list, we only need to check this schema. Up to now, the faulty schema \{($p_{2}$, 1), ($p_{3}$, 1)\} cannot be narrowed down further, because none of its sub schema is faulty schema. Hence, we can learn that schema  \{($p_{2}$, 1), ($p_{3}$, 1)\} is one MFS in this failing test case.
+The next step is to go on narrowing down this faulty schema \{($p_{2}$, 1), ($p_{3}$, 1)\}. In this step, $FSS^{\bot}$ is updated to be \{($p_{2}$, 1), ($p_{3}$, 1)\}, and $HSS^{\top}$ is updated to be \{($p_{2}$, 1)\}. We still need to obtain a list of pending schemas at this step, in which each schema is the subschema of \{($p_{2}$, 1), ($p_{3}$, 1)\}. Finally, only \{($p_{3}$, 1)\} satisfies this requirement.  Next we also need to start the binary search process to check the schema in this list. As there exists only one schema in this list, we just need to check this schema. Up to now, the faulty schema \{($p_{2}$, 1), ($p_{3}$, 1)\} cannot be narrowed down further more, because none of its sub schema is faulty schema. Hence, we can learn that schema  \{($p_{2}$, 1), ($p_{3}$, 1)\} is one MFS in this failing test case.
 
 
-
-We list a example in Fig \ref{fig_exofalo2}.
-
+After schema \{($p_{2}$, 1), ($p_{3}$, 1)\} is identified, our approach does not stop because there still exists pending schemas in this test case. Hence, we need to go on selecting pending schemas and checking them. The full process is listed in Fig \ref{fig_exofalo2}.
 
 \begin{figure*}
  \centering
@@ -826,16 +822,18 @@ We list a example in Fig \ref{fig_exofalo2}.
  \label{fig_exofalo2}
 \end{figure*}
 
+In Fig \ref{fig_exofalo2}, at each iteration, we only only shows the current $FSS^{\bot}$, $HSS^{\top}$, and checked schemas. We can learn that, the process of identification \{($p_{2}$, 1), ($p_{3}$, 1)\} is in the first iteration.   The third iteration identifies another MFS \{($p_{1}$, 1), ($p_{2}$, 1)\}. The schemas which are checked in the remaining iterations are all healthy schemas.  We can learn that to identify these two MFS in the failing test case, we only need to check 12 schemas in total in this failing test case, which is very efficient and effective.
+
 
 
 \subsection{Checking a pending schema}
-In this section, we will discuss how to check a pending schema.
+In this section, we will discuss how to check a pending schema. At first, we will give an assumption, based on which we can easily check a schema to be healthy or faulty. Then we will alleviate this assumption later.
 
 \begin{assumption}
 Given a failing test case $t$, when we identify the MFS in $t$, any newly generated test case will not introduce new MFS that is not in $t$.
 \end{assumption}
 
-There are similar assumptions given in \cite{zhang2011characterizing,martinez2008algorithms,martinez2009locating}, and we will weaken it later. Based on this assumption, we can get the following lemma which helps to determine whether a pending schema is a healthy schema or a faulty schema.
+There are similar assumptions given in \cite{zhang2011characterizing,martinez2008algorithms,martinez2009locating}. Based on this assumption, we can get the following lemma which helps to determine whether a pending schema is a healthy schema or a faulty schema.
 \newtheorem{lemma}{Lemma}
 \begin{lemma}
 For a pending schema, we generate an extra test case that contains this schema. If the extra test case passes, then this schema is a healthy schema. If the extra test case fails, then the schema is a faulty schema.
